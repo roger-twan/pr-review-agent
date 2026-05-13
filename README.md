@@ -76,10 +76,10 @@ gcloud artifacts repositories create pr-review-agent \
 Create Secret Manager secrets:
 
 ```bash
-printf 'your-github-app-id' | gcloud secrets create github-app-id --data-file=-
-printf 'your-webhook-secret' | gcloud secrets create github-webhook-secret --data-file=-
-gcloud secrets create github-private-key --data-file=github-app-private-key.pem
-printf 'sk-your-deepseek-key' | gcloud secrets create deepseek-api-key --data-file=-
+printf 'your-github-app-id' | gcloud secrets create GITHUB_APP_ID --data-file=-
+printf 'your-webhook-secret' | gcloud secrets create GITHUB_WEBHOOK_SECRET --data-file=-
+gcloud secrets create GITHUB_PRIVATE_KEY --data-file=github-app-private-key.pem
+printf 'sk-your-deepseek-key' | gcloud secrets create DEEPSEEK_API_KEY --data-file=-
 ```
 
 Deploy with Cloud Build:
