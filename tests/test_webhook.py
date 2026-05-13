@@ -12,6 +12,13 @@ def _signature(secret: str, payload: bytes) -> str:
     return f"sha256={digest}"
 
 
+def test_health_endpoint() -> None:
+    response = TestClient(app).get("/health")
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
+
+
 def test_pull_request_webhook_queues_review(monkeypatch) -> None:
     secret = "webhook-secret"
     settings = Settings(

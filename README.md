@@ -15,7 +15,7 @@ FastAPI webhook server for a GitHub App that reviews pull requests with an LLM p
 
 ```bash
 cp .env.example .env
-uv sync --extra dev
+uv sync --dev
 uv run uvicorn app.main:app --reload --port 8080
 ```
 
@@ -68,7 +68,7 @@ Set `LLM_PROVIDER=deepseek` to use the current DeepSeek adapter. The provider la
 Create an Artifact Registry repository once:
 
 ```bash
-gcloud artifacts repositories create pr-review \
+gcloud artifacts repositories create pr-review-agent \
   --repository-format=docker \
   --location=us-central1
 ```
@@ -97,7 +97,7 @@ https://YOUR_CLOUD_RUN_URL/webhooks/github
 ## Health Check
 
 ```bash
-curl http://localhost:8080/healthz
+curl http://localhost:8080/health
 ```
 
 Expected response:

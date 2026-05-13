@@ -15,8 +15,8 @@ app = FastAPI(title="PR Review Agent", version="0.1.0")
 REVIEWABLE_ACTIONS = {"opened", "reopened", "ready_for_review", "synchronize"}
 
 
-@app.get("/healthz")
-async def healthz() -> dict[str, str]:
+@app.get("/health")
+async def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
